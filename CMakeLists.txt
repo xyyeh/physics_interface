@@ -1,12 +1,13 @@
 # use cmake 3 which supports targets
 cmake_minimum_required(VERSION 3.1.3)
 
+# project name
+project(bullet_simulation_interface)
+
 # default build type
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif()
-
-message(STATUS "${CMAKE_BINARY_DIR}")
 
 # build bullet as third party
 if(${BUILD_THIRDPARTY})
@@ -26,8 +27,5 @@ if(${BUILD_THIRDPARTY})
     set(SCRIPT "build_bullet.sh")
     execute_process(COMMAND bash ${SCRIPT} ${CMAKE_ARGS} WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/thirdparty")
   endif()
-
 endif()
 
-# add app directory
-add_subdirectory(app)
