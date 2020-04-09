@@ -1,11 +1,16 @@
 #!/bin/bash 
 
-git clone https://github.com/bulletphysics/bullet3.git
-echo "adsf"
+git clone https://github.com/xyyeh/bullet3.git
 cd bullet3
-git checkout 196d0645b13e51a0a392e831a96778d8823731a8
+git checkout develop
 
 mkdir build -p && cd build
-cmake .. -DBUILD_PYBULLET=OFF $@
-make -j3
+cmake .. -DBUILD_PYBULLET=OFF -DBUILD_UNIT_TESTS=OFF $@
+make -j8
 make install
+
+cp build/examples/RobotSimulatorShm/RobotSimulatorShm ../../app_simulation/
+cp build/data/checker_blue.png ../../app_simulation/
+cp build/data/plane.mtl ../../app_simulation/
+cp build/data/plane.obj ../../app_simulation/
+cp build/data/plane.urdf ../../app_simulation/
