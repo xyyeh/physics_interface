@@ -15,6 +15,8 @@ The repository can be cloned and built using the following commands
 
 This updates the existing app_simulation folder with the new robot system defined in thirdparty/bullet3/examples/RobotSimulatorShm folder. Note that the required mesh files need to be made available. An example is given in the app_simulation folder for a Franka Emika's panda manipulator
 
+![Demo of usage](demo/franka.gif)
+
 ## Usage
 1. To change the view port, simply hold the ALT or CONTROL key, you have Maya style camera mouse controls.
 Press F1 to create a series of screenshots. Hit ESCAPE to exit the demo app.
