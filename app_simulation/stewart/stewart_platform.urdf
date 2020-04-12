@@ -1,0 +1,695 @@
+<?xml version="1.0" ?>
+<!-- ======================================================================= -->
+<!--LICENSE:                                                                 -->
+<!--Copyright (c) 2017, Erwin Coumans                                        -->
+<!--Google Inc.                                                              -->
+<!--All rights reserved.                                                     -->
+<!--                                                                         -->
+<!--Redistribution and use in source and binary forms, with or without       -->
+<!--modification, are permitted provided that the following conditions are   -->
+<!--met:                                                                     -->
+<!--                                                                         -->
+<!--1. Redistributions or derived work must retain this copyright notice,    -->
+<!--   this list of conditions and the following disclaimer.                 -->
+<!--                                                                         -->
+<!--2. Redistributions in binary form must reproduce the above copyright     -->
+<!--   notice, this list of conditions and the following disclaimer in the   -->
+<!--   documentation and/or other materials provided with the distribution.  -->
+<!--                                                                         -->
+<!--THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  -->
+<!--IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,-->
+<!--THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR   -->
+<!--PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR        -->
+<!--CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,    -->
+<!--EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,      -->
+<!--PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR       -->
+<!--PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF   -->
+<!--LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING     -->
+<!--NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS       -->
+<!--SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             -->
+
+<robot name="stewart" 
+  xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <link name="base_link">
+    <contact>
+      <lateral_friction value="1"/>
+    </contact>
+    <visual>
+      <geometry>
+        <!-- <cylinder length="0.02" radius="0.2"/> -->
+        <mesh filename="meshes/platform.stl"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.02" radius="0.2"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+    </inertial>
+  </link>
+
+  <!-- LEG 1 -->
+  <link name="leg1x">
+    <visual>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint1x" type="revolute">
+    <parent link="base_link" />
+    <child link="leg1x" />
+    <axis xyz="1 0 0"/>
+    <origin xyz="0.059810 0.29398 0" rpy="0 0 0" />
+    <limit effort="0" lower="-20.8973" upper="20.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="leg1y">
+    <visual>
+      <geometry>
+        <sphere radius="0.015"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.015"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint1y" type="revolute">
+    <parent link="leg1x" />
+    <child link="leg1y" />
+    <axis xyz="0 1 0"/>
+    <limit effort="0" lower="-20.8973" upper="20.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="leg1z">
+    <visual>
+      <origin xyz="0 0 -0.5" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="1.0" radius="0.02"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="1.0" radius="0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint1z" type="revolute">
+    <parent link="leg1y" />
+    <child link="leg1z" />
+    <axis xyz="0 0 1"/>
+    <limit effort="0" lower="-20.8973" upper="20.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="leg1p">
+    <visual>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint1" type="prismatic">
+    <parent link="leg1z" />
+    <child link="leg1p" />
+    <axis xyz="0 0 1"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <limit effort="87" lower="-1" upper="1" velocity="2.1750"/>
+  </joint>
+
+  <!-- LEG 2 -->
+  <link name="leg2x">
+    <visual>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint2x" type="revolute">
+    <parent link="base_link" />
+    <child link="leg2x" />
+    <axis xyz="1 0 0"/>
+    <origin xyz="-0.059810 0.29398 0" rpy="0 0 0" />
+    <limit effort="0" lower="-20.8973" upper="20.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="leg2y">
+    <visual>
+      <geometry>
+        <sphere radius="0.015"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.015"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint2y" type="revolute">
+    <parent link="leg2x" />
+    <child link="leg2y" />
+    <axis xyz="0 1 0"/>
+    <limit effort="0" lower="-20.8973" upper="20.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="leg2z">
+    <visual>
+      <origin xyz="0 0 -0.5" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="1.0" radius="0.02"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="1.0" radius="0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint2z" type="revolute">
+    <parent link="leg2y" />
+    <child link="leg2z" />
+    <axis xyz="0 0 1"/>
+    <limit effort="0" lower="-20.8973" upper="20.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="leg2p">
+    <visual>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint2" type="prismatic">
+    <parent link="leg2z" />
+    <child link="leg2p" />
+    <axis xyz="0 0 1"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <limit effort="87" lower="-1" upper="1" velocity="2.1750"/>
+  </joint>
+
+  <!-- LEG 3 -->
+  <link name="leg3x">
+    <visual>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint3x" type="revolute">
+    <parent link="base_link" />
+    <child link="leg3x" />
+    <axis xyz="1 0 0"/>
+    <origin xyz="-0.284497  -0.095191 0" rpy="0 0 0" />
+    <limit effort="0" lower="-20.8973" upper="20.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="leg3y">
+    <visual>
+      <geometry>
+        <sphere radius="0.015"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.015"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint3y" type="revolute">
+    <parent link="leg3x" />
+    <child link="leg3y" />
+    <axis xyz="0 1 0"/>
+    <limit effort="0" lower="-20.8973" upper="20.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="leg3z">
+    <visual>
+      <origin xyz="0 0 -0.5" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="1.0" radius="0.02"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="1.0" radius="0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint3z" type="revolute">
+    <parent link="leg3y" />
+    <child link="leg3z" />
+    <axis xyz="0 0 1"/>
+    <limit effort="0" lower="-20.8973" upper="20.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="leg3p">
+    <visual>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint3" type="prismatic">
+    <parent link="leg3z" />
+    <child link="leg3p" />
+    <axis xyz="0 0 1"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <limit effort="87" lower="-1" upper="1" velocity="2.1750"/>
+  </joint>
+
+  <!-- LEG 4 -->
+  <link name="leg4x">
+    <visual>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint4x" type="revolute">
+    <parent link="base_link" />
+    <child link="leg4x" />
+    <axis xyz="1 0 0"/>
+    <origin xyz="-0.224687  -0.198786 0" rpy="0 0 0" />
+    <limit effort="0" lower="-20.8973" upper="20.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="leg4y">
+    <visual>
+      <geometry>
+        <sphere radius="0.015"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.015"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint4y" type="revolute">
+    <parent link="leg4x" />
+    <child link="leg4y" />
+    <axis xyz="0 1 0"/>
+    <limit effort="0" lower="-20.8973" upper="20.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="leg4z">
+    <visual>
+      <origin xyz="0 0 -0.5" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="1.0" radius="0.02"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="1.0" radius="0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint4z" type="revolute">
+    <parent link="leg4y" />
+    <child link="leg4z" />
+    <axis xyz="0 0 1"/>
+    <limit effort="0" lower="-20.8973" upper="20.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="leg4p">
+    <visual>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint4" type="prismatic">
+    <parent link="leg4z" />
+    <child link="leg4p" />
+    <axis xyz="0 0 1"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <limit effort="87" lower="-1" upper="1" velocity="2.1750"/>
+  </joint>
+
+  <!-- LEG 5 -->
+  <link name="leg5x">
+    <visual>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint5x" type="revolute">
+    <parent link="base_link" />
+    <child link="leg5x" />
+    <axis xyz="1 0 0"/>
+    <origin xyz="0.224687  -0.198786 0" rpy="0 0 0" />
+    <limit effort="0" lower="-20.8973" upper="20.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="leg5y">
+    <visual>
+      <geometry>
+        <sphere radius="0.015"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.015"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint5y" type="revolute">
+    <parent link="leg5x" />
+    <child link="leg5y" />
+    <axis xyz="0 1 0"/>
+    <limit effort="0" lower="-20.8973" upper="20.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="leg5z">
+    <visual>
+      <origin xyz="0 0 -0.5" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="1.0" radius="0.02"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="1.0" radius="0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint5z" type="revolute">
+    <parent link="leg5y" />
+    <child link="leg5z" />
+    <axis xyz="0 0 1"/>
+    <limit effort="0" lower="-20.8973" upper="20.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="leg5p">
+    <visual>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint5" type="prismatic">
+    <parent link="leg5z" />
+    <child link="leg5p" />
+    <axis xyz="0 0 1"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <limit effort="87" lower="-1" upper="1" velocity="2.1750"/>
+  </joint>
+
+  <!-- LEG 6 -->
+  <link name="leg6x">
+    <visual>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint6x" type="revolute">
+    <parent link="base_link" />
+    <child link="leg6x" />
+    <axis xyz="1 0 0"/>
+    <origin xyz="0.284497  -0.095191 0" rpy="0 0 0" />
+    <limit effort="0" lower="-20.8973" upper="20.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="leg6y">
+    <visual>
+      <geometry>
+        <sphere radius="0.015"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.015"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint6y" type="revolute">
+    <parent link="leg6x" />
+    <child link="leg6y" />
+    <axis xyz="0 1 0"/>
+    <limit effort="0" lower="-20.8973" upper="20.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="leg6z">
+    <visual>
+      <origin xyz="0 0 -0.5" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="1.0" radius="0.02"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="1.0" radius="0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint6z" type="revolute">
+    <parent link="leg6y" />
+    <child link="leg6z" />
+    <axis xyz="0 0 1"/>
+    <limit effort="0" lower="-20.8973" upper="20.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="leg6p">
+    <visual>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0" izz="0.001" />
+    </inertial>
+  </link>
+  <joint name="joint6" type="prismatic">
+    <parent link="leg6z" />
+    <child link="leg6p" />
+    <axis xyz="0 0 1"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <limit effort="87" lower="-1" upper="1" velocity="2.1750"/>
+  </joint>
+
+
+
+  <material name="red">
+    <color rgba="1 0 0 1"/>
+  </material>
+  <material name="green">
+    <color rgba="0 1 0 1"/>
+  </material>
+  <material name="blue">
+    <color rgba="0 0 1 1"/>
+  </material>
+  <material name="black">
+    <color rgba="0.3 0.3 0.3 1"/>
+  </material>
+</robot>
+
