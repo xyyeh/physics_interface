@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/github/license/xyyeh/physics_interface)](https://github.com/xyyeh/physics_interface/LICENSE.md)
 
 # Physics Interface
-The repository contains a shared memory with semaphore synchronization interface to simulate any physical system. The underlying physics engine is based on bullet3 from https://github.com/bulletphysics/bullet3
+The repository contains a shared memory with semaphore synchronization interface to simulate any physical system. The semaphore used as a named semaphore called "physics_sem" while the shared memory's name is "physics_shm". The underlying physics engine is based on bullet3 from https://github.com/bulletphysics/bullet3
 
 ## Build instructions
 The repository can be cloned and built using the following commands
@@ -19,7 +19,7 @@ This updates the existing app_simulation folder with the new robot system define
 ![Franka](demo/franka.gif)
 
 ## Parallel kinematics
-Since some robots are designed with closed loop chains, an example is also provided where the constraint functionality in bullet is used.
+Since some robots are designed with closed loop chains, an example of a 6-SPS manipulator is also provided. The addConstraint function in bullet is used to enforce the constraints at the legs and thus limits the moving platform to 6 DOFs.
 
 ![PKM](demo/pkm.gif)
 
