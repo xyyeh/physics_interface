@@ -1,8 +1,12 @@
 #!/bin/bash 
 
-git clone https://github.com/xyyeh/bullet3.git
+# git clone https://github.com/xyyeh/bullet3.git
 cd bullet3
-git checkout develop
+# git checkout develop
+
+git submodule init
+git submodule update
+git pull origin develop
 
 mkdir build -p && cd build
 cmake .. -DBUILD_PYBULLET=OFF -DBUILD_UNIT_TESTS=OFF $@
