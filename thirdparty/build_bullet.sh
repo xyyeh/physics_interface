@@ -23,3 +23,6 @@ cp -rf build/data/panda ../../app_simulation/
 
 cp build/examples/RobotSimulatorStewart/RobotSimulatorStewart ../../app_simulation/
 cp -rf build/data/stewart ../../app_simulation/
+
+cp build/examples/RobotSimulatorO2/RobotSimulatorO2 ../../app_simulation/
+cp -rf build/data/o2 ../../app_simulation/
