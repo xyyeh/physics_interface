@@ -1,8 +1,12 @@
 #!/bin/bash 
 
-git clone https://github.com/xyyeh/bullet3.git
+# git clone https://github.com/xyyeh/bullet3.git
 cd bullet3
-git checkout develop
+# git checkout develop
+
+git submodule init
+git submodule update
+git pull origin develop
 
 mkdir build -p && cd build
 cmake .. -DBUILD_PYBULLET=OFF -DBUILD_UNIT_TESTS=OFF $@
@@ -19,3 +23,6 @@ cp -rf build/data/panda ../../app_simulation/
 
 cp build/examples/RobotSimulatorStewart/RobotSimulatorStewart ../../app_simulation/
 cp -rf build/data/stewart ../../app_simulation/
+
+cp build/examples/RobotSimulatorO2/RobotSimulatorO2 ../../app_simulation/
+cp -rf build/data/o2 ../../app_simulation/

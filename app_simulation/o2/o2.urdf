@@ -1,0 +1,1059 @@
+<?xml version="1.0"?>
+<robot name="panda" 
+  xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="grey"/>
+    </collision>
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+
+  <link name="base_link1">
+    <visual>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="orange_transparent"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="orange_transparent"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="base_joint1" type="prismatic">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="base_link1"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="base_link2">
+    <visual>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="orange_transparent"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="orange_transparent"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="base_joint2" type="prismatic">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_link1"/>
+    <child link="base_link2"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="base_link3">
+    <visual>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="orange_transparent"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="orange_transparent"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="base_joint3" type="prismatic">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_link2"/>
+    <child link="base_link3"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="base_link4">
+    <visual>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="orange_transparent"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="orange_transparent"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="base_joint4" type="revolute">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_link3"/>
+    <child link="base_link4"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="base_link5">
+    <visual>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="orange_transparent"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="orange_transparent"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="base_joint5" type="revolute">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_link4"/>
+    <child link="base_link5"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="base_link6">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/base_cylinder.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/base_cylinder.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </collision>
+    <inertial>
+      <mass value="173.2"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="5.45" ixy="0.474" ixz="2.51" iyy="41.54" iyz="0.108" izz="40.93"/>
+    </inertial>
+  </link>
+  <joint name="base_joint6" type="revolute">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_link5"/>
+    <child link="base_link6"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="base_link6f">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/base_foam.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/base_foam.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="base_fixed6f" type="fixed">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_link6"/>
+    <child link="base_link6f"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="base_link6f1">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/base_thrusters.stl"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/base_thrusters.stl"/>
+      </geometry>
+      <material name="black"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="base_fixed6f1" type="fixed">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_link6f"/>
+    <child link="base_link6f1"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <!-- ////////////////////////////////////RIGHT//////////////////////////////////// -->
+  <link name="right_chassis">
+    <visual>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="red_transparent"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="red_transparent"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="right_fixed_chassis" type="fixed">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 0 0.785398" xyz="0.58 -0.2 0"/>
+    <parent link="base_link6"/>
+    <child link="right_chassis"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="right_link1">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/right_link1.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/right_link1.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </collision>
+    <inertial>
+      <mass value="3.21"/>
+      <origin xyz="0.000060 0.018000 -0.030000" rpy="0 0 0"/>
+      <inertia ixx="0.006330" ixy="-0.000006" ixz="0.000003" iyy="0.005220" iyz="-0.000802" izz="0.003480"/>
+    </inertial>
+  </link>
+  <joint name="right_joint1" type="revolute">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 1.5707963 -1.5707963" xyz="0 0 0"/>
+    <parent link="right_chassis"/>
+    <child link="right_link1"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="right_link2">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/right_link2.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/right_link2.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </collision>
+    <inertial>
+      <mass value="0.99"/>
+      <origin xyz="-0.000070 -0.054100 -0.020980" rpy="0 0 0"/>
+      <inertia ixx="0.002398" ixy="0.000019" ixz="-0.000008" iyy="0.001195" iyz="0.000886" izz="0.001878"/>
+    </inertial>
+  </link>
+  <joint name="right_joint2" type="revolute">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 -1.5707963 1.5707963" xyz="0 0.0204332 0"/>
+    <parent link="right_link1"/>
+    <child link="right_link2"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="right_link3">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/right_link3.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/right_link3.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </collision>
+    <inertial>
+      <mass value="5.11"/>
+      <origin xyz="0.008960 0.013300 -0.092400" rpy="0 0 0"/>
+      <inertia ixx="0.019800" ixy="-0.000151" ixz="0.000153" iyy="0.018700" iyz="-0.001380" izz="0.005560"/>
+    </inertial>
+  </link>
+  <joint name="right_joint3" type="revolute">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="1.5707963 -1.5707963 0" xyz="0 -0.3231333 0"/>
+    <parent link="right_link2"/>
+    <child link="right_link3"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="right_link4">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/right_link4.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/right_link4.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </collision>
+    <inertial>
+      <mass value="0.974"/>
+      <origin xyz="-0.000980 0.047130 -0.027200" rpy="0 0 0"/>
+      <inertia ixx="0.002374" ixy="0.000025" ixz="0.000006" iyy="0.001407" iyz="-0.000920" izz="0.001613"/>
+    </inertial>
+  </link>
+  <joint name="right_joint4" type="revolute">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="1.5707963 0 0" xyz="0 0.0 0"/>
+    <parent link="right_link3"/>
+    <child link="right_link4"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="right_link5">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/right_link5.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/right_link5.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </collision>
+    <inertial>
+      <mass value="3.733"/>
+      <origin xyz="0.001980 0.000500 -0.160000" rpy="0 0 0"/>
+      <inertia ixx="0.017000" ixy="-0.000058" ixz="0.000177" iyy="0.017700" iyz="0.000080" izz="0.005250"/>
+    </inertial>
+  </link>
+  <joint name="right_joint5" type="revolute">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="-1.5707963 0 0" xyz="0 0.3579778 0"/>
+    <parent link="right_link4"/>
+    <child link="right_link5"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="right_link6">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/right_link6.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/right_link6.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </collision>
+    <inertial>
+      <mass value="0.3"/>
+      <origin xyz="0.000000 -0.003430 -0.000010" rpy="0 0 0"/>
+      <inertia ixx="0.000115" ixy="-0.000000" ixz="-0.000000" iyy="0.000128" iyz="0.000000" izz="0.000123"/>
+    </inertial>
+  </link>
+  <joint name="right_joint6" type="revolute">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 -1.5707963 1.5707963" xyz="0 0 0"/>
+    <parent link="right_link5"/>
+    <child link="right_link6"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="right_link7">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/right_link7.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/right_link7.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </collision>
+    <inertial>
+      <mass value="0.387"/>
+      <origin xyz="-0.000160 -0.077160 0.000470" rpy="0 0 0"/>
+      <inertia ixx="0.000456" ixy="0.000000" ixz="-0.000000" iyy="0.000195" iyz="-0.000014" izz="0.000417"/>
+    </inertial>
+  </link>
+  <joint name="right_joint7" type="revolute">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 -1.5707963 1.5707963" xyz="0 0 0"/>
+    <parent link="right_link6"/>
+    <child link="right_link7"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="right_link8">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/right_link8.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/right_link8.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </collision>
+    <inertial>
+      <mass value="2.5"/>
+      <origin xyz="0.000000 0.000000 -0.095000" rpy="0 0 0"/>
+      <inertia ixx="0.001158" ixy="0.000000" ixz="0.000000" iyy="0.001708" iyz="0.000000" izz="0.002207"/>
+    </inertial>
+  </link>
+  <joint name="right_fixed8" type="fixed">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="1.5707963 0 0" xyz="0 -0.23675 0"/>
+    <parent link="right_link7"/>
+    <child link="right_link8"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="right_link2f">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/right_link2f.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/right_link2.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="right_fixed2f" type="fixed">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="right_link2"/>
+    <child link="right_link2f"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="right_link3f">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/right_link3f.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/right_link3f.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="right_fixed3f" type="fixed">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="right_link3"/>
+    <child link="right_link3f"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="right_link4f">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/right_link4f.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/right_link4f.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="right_fixed4f" type="fixed">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="right_link4"/>
+    <child link="right_link4f"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="right_link5f">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/right_link5f.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/right_link5f.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="right_fixed5f" type="fixed">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="right_link5"/>
+    <child link="right_link5f"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="right_link8f">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/right_link8f.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/right_link8f.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="right_fixed8f" type="fixed">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="right_link8"/>
+    <child link="right_link8f"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <!-- ////////////////////////////////////LEFT//////////////////////////////////// -->
+  <link name="left_chassis">
+    <visual>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="red_transparent"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+      <material name="red_transparent"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="left_fixed_chassis" type="fixed">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 0 -0.785398" xyz="0.58 0.2 0"/>
+    <parent link="base_link6"/>
+    <child link="left_chassis"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="left_link1">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/left_link1.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/left_link1.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </collision>
+    <inertial>
+      <mass value="3.21"/>
+      <origin xyz="0.000060 0.018000 0.030000" rpy="0 0 0"/>
+      <inertia ixx="0.006330" ixy="-0.000006" ixz="-0.000003" iyy="0.005220" iyz="0.000802" izz="0.003480"/>
+    </inertial>
+  </link>
+  <joint name="left_joint1" type="revolute">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 1.5707963 -1.5707963" xyz="0 0 0"/>
+    <parent link="left_chassis"/>
+    <child link="left_link1"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="left_link2">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/left_link2.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/left_link2.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </collision>
+    <inertial>
+      <mass value="0.99"/>
+      <origin xyz="0.000070 -0.054100 -0.020980" rpy="0 0 0"/>
+      <inertia ixx="0.002398" ixy="-0.000019" ixz="0.000008" iyy="0.001195" iyz="0.000886" izz="0.001878"/>
+    </inertial>
+  </link>
+  <joint name="left_joint2" type="revolute">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 -1.5707963 1.5707963" xyz="0 0.0204332 0"/>
+    <parent link="left_link1"/>
+    <child link="left_link2"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="left_link3">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/left_link3.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/left_link3.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </collision>
+    <inertial>
+      <mass value="5.11"/>
+      <origin xyz="0.008960 -0.013300 -0.092400" rpy="0 0 0"/>
+      <inertia ixx="0.019800" ixy="0.000151" ixz="0.000153" iyy="0.018700" iyz="0.001380" izz="0.005560"/>
+    </inertial>
+  </link>
+  <joint name="left_joint3" type="revolute">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="1.5707963 -1.5707963 0" xyz="0 -0.3231333 0"/>
+    <parent link="left_link2"/>
+    <child link="left_link3"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="left_link4">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/left_link4.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/left_link4.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </collision>
+    <inertial>
+      <mass value="0.974"/>
+      <origin xyz="-0.000980 0.047130 0.027200" rpy="0 0 0"/>
+      <inertia ixx="0.002374" ixy="0.000025" ixz="-0.000006" iyy="0.001407" iyz="0.000920" izz="0.001613"/>
+    </inertial>
+  </link>
+  <joint name="left_joint4" type="revolute">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="1.5707963 0 0" xyz="0 0.0 0"/>
+    <parent link="left_link3"/>
+    <child link="left_link4"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="left_link5">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/left_link5.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/left_link5.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </collision>
+    <inertial>
+      <mass value="3.733"/>
+      <origin xyz="0.001980 -0.000500 -0.160000" rpy="0 0 0"/>
+      <inertia ixx="0.017000" ixy="0.000058" ixz="0.000177" iyy="0.017700" iyz="-0.000080" izz="0.005250"/>
+    </inertial>
+  </link>
+  <joint name="left_joint5" type="revolute">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="-1.5707963 0 0" xyz="0 0.3579778 0"/>
+    <parent link="left_link4"/>
+    <child link="left_link5"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="left_link6">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/left_link6.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/left_link6.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </collision>
+    <inertial>
+      <mass value="0.3"/>
+      <origin xyz="0.000000 -0.003430 0.000010" rpy="0 0 0"/>
+      <inertia ixx="0.000115" ixy="-0.000000" ixz="0.000000" iyy="0.000128" iyz="-0.000000" izz="0.000123"/>
+    </inertial>
+  </link>
+  <joint name="left_joint6" type="revolute">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 -1.5707963 1.5707963" xyz="0 0 0"/>
+    <parent link="left_link5"/>
+    <child link="left_link6"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="left_link7">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/left_link7.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/left_link7.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </collision>
+    <inertial>
+      <mass value="0.387"/>
+      <origin xyz="0.000160 -0.077160 0.000470" rpy="0 0 0"/>
+      <inertia ixx="0.000456" ixy="-0.000000" ixz="0.000000" iyy="0.000195" iyz="-0.000014" izz="0.000417"/>
+    </inertial>
+  </link>
+  <joint name="left_joint7" type="revolute">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 -1.5707963 1.5707963" xyz="0 0 0"/>
+    <parent link="left_link6"/>
+    <child link="left_link7"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="left_link8">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/left_link8.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/left_link8.stl"/>
+      </geometry>
+      <material name="grey"/>
+    </collision>
+    <inertial>
+      <mass value="2.5"/>
+      <origin xyz="-0.000000 0.000000 -0.095000" rpy="0 0 0"/>
+      <inertia ixx="0.001158" ixy="0.000000" ixz="0.000000" iyy="0.001708" iyz="0.000000" izz="0.002207"/>
+    </inertial>
+  </link>
+  <joint name="left_fixed8" type="fixed">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="1.5707963 0 0" xyz="0 -0.23675 0"/>
+    <parent link="left_link7"/>
+    <child link="left_link8"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="left_link2f">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/left_link2f.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/left_link2.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="left_fixed2f" type="fixed">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="left_link2"/>
+    <child link="left_link2f"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="left_link3f">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/left_link3f.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/left_link3f.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="left_fixed3f" type="fixed">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="left_link3"/>
+    <child link="left_link3f"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="left_link4f">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/left_link4f.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/left_link4f.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="left_fixed4f" type="fixed">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="left_link4"/>
+    <child link="left_link4f"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="left_link5f">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/left_link5f.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/left_link5f.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="left_fixed5f" type="fixed">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="left_link5"/>
+    <child link="left_link5f"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+  <link name="left_link8f">
+    <visual>
+      <geometry>
+        <mesh filename="meshes/left_link8f.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes/left_link8f.stl"/>
+      </geometry>
+      <material name="orange"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001"/>
+    </inertial>
+  </link>
+  <joint name="left_fixed8f" type="fixed">
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="left_link8"/>
+    <child link="left_link8f"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87" lower="-2.8973" upper="2.8973" velocity="2.1750"/>
+  </joint>
+
+
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+  <material name="hidden">
+    <color rgba="0 0 0 0"/>
+  </material>
+  <material name="orange">
+    <color rgba="1. 0.55 0. 1."/>
+  </material>
+  <material name="orange_transparent">
+    <color rgba="1. 0.55 0. 0"/>
+  </material>
+  <material name="red">
+    <color rgba="1. 0. 0. 1."/>
+  </material>
+  <material name="red_transparent">
+    <color rgba="1. 0. 0. 0.5"/>
+  </material>
+  <material name="blue">
+    <color rgba="0. 0. 1. 1"/>
+  </material>
+  <material name="grey">
+    <color rgba="1. 1. 1. 1"/>
+  </material>
+</robot>
