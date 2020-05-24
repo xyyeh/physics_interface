@@ -1,7 +1,6 @@
 [![Pull requests](https://img.shields.io/github/issues-pr-raw/xyyeh/physics_interface.svg)](https://github.com/xyyeh/physics_interface/pulls)
 [![Opened issues](https://img.shields.io/github/issues-raw/xyyeh/physics_interface.svg)](https://github.com/xyyeh/physics_interface/issues)
 [![Documentation](https://img.shields.io/badge/Documentation-latest-blue.svg)](https://github.com/xyyeh/physics_interface/)
-[![License](https://img.shields.io/github/license/xyyeh/physics_interface)](https://github.com/xyyeh/physics_interface/LICENSE.md)
 
 # Physics Interface
 The repository contains a shared memory with semaphore synchronization interface to simulate any physical system. The semaphore used as a named semaphore called "physics_sem" while the shared memory's name is "physics_shm". The underlying physics engine is based on bullet3 from https://github.com/bulletphysics/bullet3
