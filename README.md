@@ -7,7 +7,7 @@
 The repository contains a shared memory with semaphore synchronization interface to simulate any physical system. The semaphore used as a named semaphore called "physics_sem" while the shared memory's name is "physics_shm". The underlying physics engine is based on bullet3 from https://github.com/bulletphysics/bullet3
 
 ## Build instructions
-The repository can be cloned and built using the following commands
+The repository can be cloned and built using the following commands:
 
     git clone https://github.com/xyyeh/physics_interface.git
     mkdir build
