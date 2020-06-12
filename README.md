@@ -20,7 +20,7 @@ This updates the existing app_simulation folder with the new robot system define
 ## Parallel kinematics
 Since some robots are designed with closed loop chains, an example of a 6-SPS manipulator is also provided. The addConstraint function in bullet is used to enforce the constraints at the legs and thus limits the moving platform to 6 DOFs.
 
-![PKM](demo/pkm.gif)
+![PKM](demo/stewart.gif)
 
 ## Usage
 1. To change the view port, simply hold the ALT or CONTROL key, you have Maya style camera mouse controls.
