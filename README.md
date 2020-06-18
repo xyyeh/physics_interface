@@ -23,6 +23,11 @@ Since some robots are designed with closed loop chains, an example of a 6-SPS ma
 ![PKM](demo/stewart.gif)
 
 ## Usage
-1. To change the view port, simply hold the ALT or CONTROL key, you have Maya style camera mouse controls.
+1. Within the app_simulation folder, two executables are available. RobotSimulatorSerial can be used for any robotic platform that has a tree structure. RobotSimulatorStewart, however, can only be used for stewart platforms.
+2. For RobotSimulatorSerial, simply run:
+    ./RobotSimulatorSerial <urdf file path> <physics step frequency>
+3. To change the view port, simply hold the ALT or CONTROL key, you have Maya style camera mouse controls.
 Press F1 to create a series of screenshots. Hit ESCAPE to exit the demo app.
-2. To interact with the robot using a controller, include the control code in the app_control folder. A shared memory header only library is provided. Simply include that in your application
+4. To interact with the robot using a controller, include the control code in the app_control folder. A shared memory header only library is provided. Simply include that in your application
+
+## Interfacing with the physics interface
